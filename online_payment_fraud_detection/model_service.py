@@ -1,16 +1,15 @@
 from sklearn.linear_model import PassiveAggressiveRegressor
-from sklearn.tree import DecisionTreeClassifier
 
 from Instagram_Reach_Analysis.plot_service import Visualize
 
 
-class PredictionModel:
+class ModelService:
     def __init__(self, datasetService):
         self.datasetService = datasetService
         self.model = None
 
     def load_algorithm(self):
-        self.model = DecisionTreeClassifier()
+        self.model = PassiveAggressiveRegressor()
 
     def train(self):
         self.load_algorithm()
@@ -21,8 +20,8 @@ class PredictionModel:
     def predict(self, features):
         return self.model.predict(features)
 
-    # def visualize(self):
-    #     plt = Visualize(self.datasetService)
-    #     plt.wordlcloud()
-    #
-    #     return
+    def visualize(self):
+        plt = Visualize(self.datasetService)
+        plt.wordlcloud()
+
+        return
