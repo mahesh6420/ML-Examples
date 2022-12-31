@@ -3,8 +3,8 @@ from wordcloud import WordCloud, STOPWORDS
 
 
 class Visualize:
-    def __init__(self, datasetService):
-        self.datasetService = datasetService
+    def __init__(self, dataService):
+        self.datasetService = dataService
 
     def wordlcloud(self):
         text = " ".join(i for i in self.datasetService.data.Caption)

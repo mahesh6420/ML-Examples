@@ -10,16 +10,19 @@ if __name__ == "__main__":
     # print(datasetService.data.isnull().sum())
 
     #    correlation of data with the prediction column - isFraud in this case
-    correlation = datasetService.data.corr()
+    # correlation = datasetService.data.corr()
     # print(correlation['isFraud'].sort_values(ascending=False))
 
     datasetService.preprocessing()
     # print(datasetService.data['type'])
 
     model = ModelService(datasetService)
+    model.load_algorithm()
     model.train()
+    print(model.model)
+    # model.train()
 
     # prediction
     # features = [type, amount, oldbalanceOrg, newbalanceOrig]
-    features = np.array([[4, 9000.60, 9000.60, 0.0]])
-    print(model.predict(features))
+    # features = np.array([[4, 9000.60, 9000.60, 0.0]])
+    # print(model.predict(features))
