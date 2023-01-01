@@ -13,7 +13,7 @@ class ModelAbstract(ABC):
 
     def train(self):
         X_train, X_test, y_train, y_test = self.dataService.get_train_test_data()
-        print("training")
+        print("training started")
         self.model.fit(X_train, y_train)
         print('training complete')
         print(f"Accuracy of the trained model is: {self.model.score(X_test, y_test)}")

@@ -51,6 +51,14 @@ class DataAbstract(ABC):
 
         return
 
+    def check_null(self):
+        print(self.data.isnull().sum())
+
+    def get_correlation(self, column_name):
+        correlation = self.data.corr()
+        print(f'Correlation of {column_name} with other columns is: ')
+        print(correlation[f'{column_name}'].sort_values(ascending=False))
+
     @abstractmethod
     def preprocessing(self):
         pass
