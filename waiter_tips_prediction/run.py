@@ -1,5 +1,4 @@
-import pandas as pd
-
+import numpy as np
 from waiter_tips_prediction.data_service import DataService
 from waiter_tips_prediction.model_service import ModelService
 
@@ -11,7 +10,7 @@ if __name__ == "__main__":
     model = ModelService(dataService)
     model.load_algorithm()
     model.train()
-    print(dataService.data.dtypes)
-    # print(dataService.view(5))
-    # model.train()
-    # print(dataService.view(5))
+
+    features = np.array([[24.50, 1, 0, 0, 1, 4]])
+    print(model.predict(features))
+

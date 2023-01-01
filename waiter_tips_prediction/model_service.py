@@ -9,8 +9,5 @@ class ModelService(ModelAbstract):
         self.model = LinearRegression()
         return
 
-    def predict(self):
-        pass
-
     def visualize(self):
         pass
