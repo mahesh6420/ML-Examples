@@ -7,7 +7,7 @@ from data_abstract import DataAbstract
 
 class DataService(DataAbstract):
     """
-    Class that has methods that works with a data.
+    this Class  has methods that works with a data.
     like view, get_columns, preprocessing etc.
     """
 

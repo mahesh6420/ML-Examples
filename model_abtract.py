@@ -12,11 +12,10 @@ class ModelAbstract(ABC):
         pass
 
     def train(self):
-        X_train, X_test, y_train, y_test = self.dataService.get_train_test_data()
         print("training started")
-        self.model.fit(X_train, y_train)
+        self.model.fit(self.dataService.X_train, self.dataService.y_train)
         print('training complete')
-        print(f"Accuracy of the trained model is: {self.model.score(X_test, y_test)}")
+        print(f"Accuracy of the trained model is: {self.model.score(self.dataService.X_test, self.dataService.y_test)}")
         return
 
     def predict(self, features):

@@ -1,16 +1,19 @@
 from abc import ABC, abstractmethod
+
+import pandas.core.frame
 from sklearn.model_selection import train_test_split
 import numpy as np
 import pandas as pd
 
 class DataAbstract(ABC):
 
-    def __init__(self, dataUrl):
+    def __init__(self, data_url):
         """
         Initiate class with url of the data
         :param dataUrl: url of the data
         """
-        self.data = pd.read_csv(dataUrl)
+        self.data = pd.read_csv(data_url)
+        self.X_train, self.X_test, self.y_train, self.y_test = None
 
     def view(self, row_numbers):
         """
@@ -32,18 +35,24 @@ class DataAbstract(ABC):
         :selected_columns: pass a list of columns to consider for the training process
         :return: X_train, X_test, y_train, y_test
         """
+        x_columns, y_column = self.get_x_y_columns(selected_columns)
+        x = np.array(self.data[x_columns])
+        y = np.array(self.data[[y_column]])
+
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+
+        return self.X_train, self.X_test, self.y_train, self.y_test
+
+    def get_x_y_columns(self, selected_columns):
         columns = self.get_columns()
         print(columns)
         print(columns[:-1])
         print(columns[-1])
 
-        print(selected_columns)
-        x = np.array(self.data[columns[:-1] if selected_columns is None else selected_columns])
-        y = np.array(self.data[[columns[-1]]])
+        x_columns = columns[:-1] if selected_columns is None else selected_columns
+        y_column = columns[-1]
 
-        X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-
-        return X_train, X_test, y_train, y_test
+        return x_columns, y_column
 
     def convert_to_category(self, list_of_column_names):
         for column_name in list_of_column_names:
