@@ -13,7 +13,7 @@ class DataAbstract(ABC):
         :param dataUrl: url of the data
         """
         self.data = pd.read_csv(data_url)
-        self.X_train, self.X_test, self.y_train, self.y_test = None
+        self.X_train, self.X_test, self.y_train, self.y_test = None, None, None, None
 
     def view(self, row_numbers):
         """

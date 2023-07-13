@@ -1,4 +1,7 @@
 # %%
+# https://thecleverprogrammer.com/2021/12/13/alexnet-architecture-using-python/
+
+# %%
 import keras
 import tensorflow as tf
 import keras.layers as layers

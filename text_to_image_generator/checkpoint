@@ -1,0 +1,2 @@
+model_checkpoint_path: "generator_weight"
+all_model_checkpoint_paths: "generator_weight"
